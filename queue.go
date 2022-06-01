@@ -21,9 +21,7 @@ func (q *Queue) Size() int {
 	return q.size
 }
 
-// ToDo: implement enqueue and dequeue
-
-func (q *Queue) Enqueue(value interface{}) {
+func (q *Queue) Push(value interface{}) {
 	n := &nodeQueue{value, nil}
 
 	if q.IsEmpty() {
@@ -37,7 +35,7 @@ func (q *Queue) Enqueue(value interface{}) {
 	q.size += 1
 }
 
-func (q *Queue) Dequeue() interface{} {
+func (q *Queue) Pop() interface{} {
 	if q.IsEmpty() {
 		return nil
 	}
@@ -64,6 +62,21 @@ func (q *Queue) Peek() interface{} {
 		return nil
 	}
 	return q.front.value
+}
+
+func (q *Queue) Front() interface{} {
+	if q.IsEmpty() {
+		return nil
+	}
+	return q.front.value
+}
+
+func (q *Queue) Back() interface{} {
+	if q.IsEmpty() {
+		return nil
+	}
+
+	return q.back.value
 }
 
 func (q *Queue) Print() {
